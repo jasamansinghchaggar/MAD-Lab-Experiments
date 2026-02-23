@@ -52,7 +52,7 @@ class _CalculatorState extends State<Calculator> {
             _input = '-$_input';
           }
         }
-      } else if (['+', '-', '×', '÷'].contains(value)) {
+      } else if (['+', '-', 'x', '÷'].contains(value)) {
         if (_input.isNotEmpty) {
           _firstOperand = double.tryParse(_input) ?? 0;
           _operator = value;
@@ -69,7 +69,7 @@ class _CalculatorState extends State<Calculator> {
             case '-':
               res = _firstOperand - second;
               break;
-            case '×':
+            case 'x':
               res = _firstOperand * second;
               break;
             case '÷':
@@ -137,7 +137,7 @@ class _CalculatorState extends State<Calculator> {
   @override
   Widget build(BuildContext context) {
     final String displayInput = _input.isEmpty
-        ? (_operator.isNotEmpty ? '$_firstOperand ${_operator} ' : '0')
+        ? (_operator.isNotEmpty ? '$_firstOperand $_operator ' : '0')
         : (_operator.isNotEmpty && _shouldResetInput == false
               ? '${_firstOperand.toInt()} $_operator $_input'
               : _input);
